@@ -29,7 +29,10 @@ class TargetPolicyTests(unittest.TestCase):
         robot.execute(Action.SPRAY)
         self.assertEqual(robot.history, [Action.SPRAY])
 
+    def test_invalid_center_is_rejected(self) -> None:
+        with self.assertRaises(ValueError):
+            self.policy.decide(Detection("weed", 0.9, 1.2, 0.5))
+
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -63,6 +63,15 @@ python scripts/prepare_dataset.py --root data/weed --class-name weed
 
 没有图片时，该命令会提示数据集尚未准备好；这是正常的，仓库不会提交个人图片和训练权重。
 
+公开数据集选择、许可证和下载后的整理方式见 [`docs/datasets.md`](docs/datasets.md)。如果数据集包含 `crop` 和 `weed` 两类，可以重复传入 `--class-name`：
+
+```powershell
+python scripts/prepare_dataset.py `
+  --root data/weed `
+  --class-name crop `
+  --class-name weed
+```
+
 ## 3. 训练、验证和推理
 
 ### 训练

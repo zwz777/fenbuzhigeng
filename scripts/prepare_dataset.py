@@ -34,7 +34,12 @@ def validate_split(root: Path, split: str) -> tuple[int, int]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("data/weed"))
-    parser.add_argument("--class-name", default="weed")
+    parser.add_argument(
+        "--class-name",
+        action="append",
+        dest="class_names",
+        help="类别名称；可重复传入，顺序必须与YOLO标签的class_id一致",
+    )
     parser.add_argument("--strict", action="store_true", help="没有图片时返回失败，适合CI")
     args = parser.parse_args()
 
@@ -46,9 +51,10 @@ def main() -> None:
     val_images, val_labels = validate_split(root, "val")
 
     data_file = root / "data.yaml"
+    class_names = args.class_names or ["weed"]
     data_file.write_text(
         yaml.safe_dump(
-            {"path": ".", "train": "images/train", "val": "images/val", "names": {0: args.class_name}},
+            {"path": ".", "train": "images/train", "val": "images/val", "names": class_names},
             sort_keys=False,
             allow_unicode=True,
         ),
@@ -62,4 +68,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
