@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fenbu-zhigeng"
+version = "0.1.0"
+description = "分布智耕视觉识别与精准喷施验证原型"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "ultralytics==8.3.0",
+    "opencv-python==4.10.0.84",
+    "numpy==1.26.4",
+    "PyYAML==6.0.2",
+    "pyserial==3.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

@@ -1,0 +1,20 @@
+camera:
+  source: 0
+  width: 640
+  height: 480
+
+detection:
+  confidence: 0.55
+  target_class: weed
+  center_band: 0.12
+
+control:
+  approach_step_ms: 250
+  spray_duration_ms: 300
+  cooldown_ms: 1500
+
+serial:
+  port: COM5
+  baudrate: 115200
+  timeout_s: 1.0
+
